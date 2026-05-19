@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YAHIR CAR</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
+
+body{
+  background:#011b1d;
+  color:white;
+}
+
+/* HEADER */
+header{
+  background:black;
+  padding:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:2px solid #00bfff;
+}
+
+header h1{
+  color:#00bfff;
+  font-size:32px;
+}
+
+nav a{
+  color:white;
+  margin-left:15px;
+  text-decoration:none;
+}
+
+nav a:hover{
+  color:#00bfff;
+}
+
+/* HERO */
+.hero{
+  height:90vh;
+  background:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1400&auto=format&fit=crop') center/cover;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.hero-content{
+  background:rgba(0,0,0,0.7);
+  padding:40px;
+  border-radius:15px;
+}
+
+.hero h2{
+  font-size:50px;
+  margin-bottom:10px;
+}
+
+.hero p{
+  font-size:20px;
+  margin-bottom:20px;
+}
+
+.btn{
+  padding:12px 25px;
+  background:#00bfff;
+  border:none;
+  color:white;
+  cursor:pointer;
+  border-radius:5px;
+}
+
+/* AUTOS */
+.cars{
+  padding:60px 20px;
+  text-align:center;
+}
+
+.cars h2{
+  color:#00bfff;
+  font-size:40px;
+  margin-bottom:40px;
+}
+
+.car-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:25px;
+}
+
+.car-card{
+  background:#1b1b1b;
+  border-radius:15px;
+  overflow:hidden;
+}
+
+.car-card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
+
+.car-info{
+  padding:20px;
+}
+
+.price{
+  color:#00bfff;
+  font-size:22px;
+  margin:10px 0;
+}
+
+/* DETALLE */
+.detalle{
+  padding:60px 20px;
+  text-align:center;
+  background:#111;
+}
+
+.detalle-box{
+  max-width:600px;
+  margin:auto;
+  background:#1b1b1b;
+  padding:30px;
+  border-radius:15px;
+}
+
+.detalle h2{
+  color:#00bfff;
+  margin-bottom:20px;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+  <h1>SHARK CAR </h1>
+  <nav>
+    <a href="#">Inicio</a>
+    <a href="#">Autos</a>
+    <a href="#">Contacto</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h2>SHARK CAR</h2>
+    <p>DUENO : OVIEDO MENCHACA ALBERTO YAHIR</p>
+  </div>
+</section>
+
+<section class="cars">
+  <h2>Autos Disponibles</h2>
+
+  <div class="car-grid">
+
+    <!-- BUGATTI -->
+    <div class="car-card">
+      <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?q=80&w=1200&auto=format&fit=crop">
+      <div class="car-info">
+        <h3>Bugatti Chiron</h3>
+        <p>El auto más rápido del mundo</p>
+        <div class="price">$65,000,000 MXN</div>
+        <button class="btn" onclick="mostrar('Bugatti Chiron','$65M','2026','Azul','420 km/h')">
+          Ver detalles
+        </button>
+      </div>
+    </div>
+
+    <!-- PORSCHE -->
+    <div class="car-card">
+      <img src="https://images.unsplash.com/photo-1617531653332-bd46c24f2068?q=80&w=1200&auto=format&fit=crop">
+      <div class="car-info">
+        <h3>Porsche 911</h3>
+        <p>Deportivo elegante y potente</p>
+        <div class="price">$3,500,000 MXN</div>
+        <button class="btn" onclick="mostrar('Porsche 911','$3.5M','2025','Rojo','330 km/h')">
+          Ver detalles
+        </button>
+      </div>
+    </div>
+
+    <!-- TESLA -->
+    <div class="car-card">
+      <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?q=80&w=1200&auto=format&fit=crop">
+      <div class="car-info">
+        <h3>Tesla Model S</h3>
+        <p>Tecnología eléctrica avanzada</p>
+        <div class="price">$2,300,000 MXN</div>
+        <button class="btn" onclick="mostrar('Tesla Model S','$2.3M','2025','Blanco','322 km/h')">
+          Ver detalles
+        </button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="detalle">
+  <h2 id="nombre">Selecciona un auto</h2>
+
+  <div class="detalle-box">
+    <p><strong>Precio:</strong> <span id="precio"></span></p>
+    <p><strong>Año:</strong> <span id="anio"></span></p>
+    <p><strong>Color:</strong> <span id="color"></span></p>
+    <p><strong>Velocidad:</strong> <span id="velocidad"></span></p>
+  </div>
+</section>
+
+<script>
+function mostrar(nombre, precio, anio, color, velocidad){
+  document.getElementById("nombre").innerText = nombre;
+  document.getElementById("precio").innerText = precio;
+  document.getElementById("anio").innerText = anio;
+  document.getElementById("color").innerText = color;
+  document.getElementById("velocidad").innerText = velocidad;
+}
+</script>
+
+</body>
+</html>
+<!-- ZONA DE COMPRA -->
+<section class="compra">
+
+  <h2>Zona de Compra - YAHIR CAR</h2>
+
+  <p>Llena tus datos para solicitar información o comprar tu auto favorito.</p>
+
+  <form class="formulario">
+
+    <input type="text" placeholder="Nombre completo" required>
+
+    <input type="email" placeholder="Correo electrónico" required>
+
+    <input type="tel" placeholder="Número de teléfono" required>
+
+    <select required>
+      <option value="">Selecciona un auto</option>
+      <option>Bugatti Chiron</option>
+      <option>Porsche 911</option>
+      <option>Tesla Model S</option>
+    </select>
+
+    <textarea placeholder="Mensaje o solicitud..." rows="4"></textarea>
+
+    <button type="submit" class="btn">Enviar solicitud</button>
+
+  </form>
+
+</section>
+<!-- ZONA DE UBICACIÓN -->
+<section class="ubicacion">
+
+  <h2>Nuestras Ubicaciones</h2>
+
+  <p>Encuentra nuestras sucursales en diferentes puntos de Nuevo León.</p>
+
+  <div class="ubicacion-grid">
+
+    <div class="ubicacion-card">
+      <h3>Monterrey</h3>
+      <p>Sucursal principal con autos de lujo y deportivos.</p>
+    </div>
+
+    <div class="ubicacion-card">
+      <h3>Juárez</h3>
+      <p>Venta de autos accesibles y financiamiento.</p>
+    </div>
+
+    <div class="ubicacion-card">
+      <h3>Guadalupe</h3>
+      <p>Servicio automotriz y atención personalizada.</p>
+    </div>
+
+    <div class="ubicacion-card">
+      <h3>San Pedro</h3>
+      <p>Autos premium como Bugatti y Porsche.</p>
+    </div>
+
+  </div>
+
+</section>
